@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Play
+{% endblock %}
+
+{% block main %}
+    <form action = "/play" id ="quiz" name = "quiz" method = "post">
+        {% for i in range(0, 4) %}
+            <div class = "form-group">
+                <p style = "font-size:large;">What is the meaning of <b>{{ questions[i] }}?</b></p>
+                <input type = "radio" id = "mc" name = "question{{ i }}" value = "{{ options[0] }}">{{ options[0] }}<br>
+                <input type = "radio" id = "mc" name = "question{{ i }}" value = "{{ options[1] }}">{{ options[1] }}<br>
+                <input type = "radio" id = "mc" name = "question{{ i }}" value = "{{ options[2] }}">{{ options[2] }}<br>
+                <input type = "radio" id = "mc" name = "question{{ i }}" value = "{{ options[3] }}">{{ options[3] }}<br>
+                <br>
+            </div>
+        {% endfor %}
+        <button class = "btn btn-primary" type = "finish">Finish</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- documentation at http://getbootstrap.com/docs/4.1/, alternative themes at https://bootswatch.com/ -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- https://favicon.io/emoji-favicons/money-mouth-face/ -->
+        <link href="/static/favicon.ico" rel="icon">
+
+        <link href="/static/styles.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        {% if session.user_id %}
+        <title href = "/home">Vocabulary Builder</title>
+        {% else %}
+        <title href = "/login">Vocabulary Builder</title>
+        {% endif %}
+        <title>{% block title %}{% endblock %}</title>
+    </head>
+
+    <body>
+
+        <nav class="navbar navbar-expand-md navbar-light bg-light border">
+            <a class="navbar-brand" href="/"><span class="blue">Vocab</span><span class="green">Builder</span></a>
+            <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar" data-toggle="collapse" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse topnav" id="navbar">
+                {% if session.user_id %}
+                <div class="dropdown">
+                  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Actions
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="/play">Play</a>
+                    <a class="dropdown-item" href="/add">Add</a>
+                    <a class="dropdown-item" href="/delete">Delete</a>
+                    <a class="dropdown-item" href="/settings">Settings</a>
+                    <a class="dropdown-item" href="/logout">Log Out</a>
+                  </div>
+                </div>
+                {% else %}
+                    <div class="dropdown">
+                  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Actions
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="/register">Register</a>
+                    <a class="dropdown-item" href="/login">Log In</a>
+                  </div>
+                </div>
+                {% endif %}
+            </div>
+        </nav>
+
+        {% if get_flashed_messages() %}
+            <header>
+                <div class="alert alert-primary border text-center" role="alert">
+                    {{ get_flashed_messages() | join(" ") }}
+                </div>
+            </header>
+        {% endif %}
+
+        <main class="container p-5">
+            {% block main %}{% endblock %}
+        </main>
+
+        <footer class="small text-center text-muted">
+
+        </footer>
+
+    </body>
+    <script></script>
+</html>

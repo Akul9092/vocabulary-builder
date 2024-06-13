@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block main %}
+    <table class = "table">
+        <thead>
+            <tr>
+                <th>Words</th>
+                <th>Definition</th>
+                <th>Time Created</th>
+            </tr>
+        </thead>
+        <tfoot>
+            {% for words in allwords %}
+            <tr>
+                <td>{{ words.word }}</td>
+                <td>{{ words.definition }}</td>
+                <td>{{ words.time }}</td>
+            </tr>
+            {% endfor %}
+
+        </tfoot>
+    </table>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Delete
+{% endblock %}
+
+{% block main %}
+    <form action = "/delete" method = "post">
+        <div class = "form-group">
+            <select class="form-control" name="deleteword" required>
+                <option disabled selected value>Word</option>
+                {% for word in words %}
+                    <option value="{{ word.word }}">{{ word.word }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button class = "btn btn-primary" type = "submit">Delete Word</button>
+    </form>
+{% endblock %}

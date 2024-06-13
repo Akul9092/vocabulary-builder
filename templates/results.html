@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block main %}
+    <p style = "font-size: xx-large;"> You scored </p>
+    {% if num == 0 %}
+    <p style = "font-size: xx-large; color: red;">{{ num * 25 }}%.</p>
+    {% else %}
+    <p style = "font-size: xx-large; color: green;">{{ num * 25 }}%!</p>
+    {% endif %}
+{% endblock %}
